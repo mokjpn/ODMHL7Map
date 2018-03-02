@@ -1,0 +1,8 @@
+#hl7-treeview {
+  float: left;
+  width: 50%;
+}
+#hl7-tableview {
+  float: right;
+  width: 50%;
+}

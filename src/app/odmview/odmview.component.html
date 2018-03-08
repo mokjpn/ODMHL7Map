@@ -1,6 +1,24 @@
-<file-drop headertext="Drop files here" (onFileDrop)="dropped($event)">
+<file-drop *ngIf="dispODM.length == 1" headertext="Drop files here" (onFileDrop)="dropped($event)">
      <span>Drop ODM File here</span>
  </file-drop>
- <dl>
-<ng-container *ngFor="let item of dispODM"><dt>{{item.Name}} <dd>{{item.Value}} </ng-container>
-</dl>
+ <ng-container *ngFor="let form of dispODM | slice: pageStart: pageStart+1">
+   <h3>{{form.FormName}}
+     <ul>
+       <ng-container *ngFor="let section of form.Sections">
+         <li>
+           {{section.SectionName}}
+           <dl>
+             <ng-container *ngFor="let item of section.Items"><dt>{{item.Name}} <dd>{{item.Value}} </ng-container>
+             </dl>
+           </li>
+         </ng-container>
+       </ul>
+     </h3>
+   </ng-container>
+   <p>Go To...
+     <ul>
+     <ng-container *ngFor="let form of dispODM; index as pagenumber">
+       <a href="#" (click)="pager(pagenumber)">{{form.FormName}}</a></ng-container>
+     </ul>
+  <p>
+   <button (click)="update()">Update!</button>

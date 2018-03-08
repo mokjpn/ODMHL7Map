@@ -25,7 +25,7 @@ export class Hl7TableComponent implements OnInit {
   }
   public files: UploadFile[] = [];
   public hl7table;
-  public hl7header;
+  public hl7header = [];
   public hl7contents;
   public cols;
 
@@ -53,5 +53,10 @@ export class Hl7TableComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  update() {
+    console.log(this.hl7contents);
+  }
+
 
 }

@@ -1,3 +1,6 @@
-<p>
-  odmview works!
-</p>
+<file-drop headertext="Drop files here" (onFileDrop)="dropped($event)">
+     <span>Drop ODM File here</span>
+ </file-drop>
+ <dl>
+<ng-container *ngFor="let item of dispODM"><dt>{{item.Name}} <dd>{{item.Value}} </ng-container>
+</dl>

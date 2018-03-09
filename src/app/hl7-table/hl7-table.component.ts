@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { UploadEvent, UploadFile } from 'ngx-file-drop';
+import {
+  Component,
+  OnInit
+} from '@angular/core';
+import {
+  UploadEvent,
+  UploadFile
+} from 'ngx-file-drop';
 
-declare var require: any
+declare
+var require: any
 var hl72json = require('qewd-hl72json');
 var jsonToTable = require('json-to-table');
 
@@ -12,9 +19,9 @@ var jsonToTable = require('json-to-table');
 })
 export class Hl7TableComponent implements OnInit {
 
-	public loadHL7(message:string): void {
+  public loadHL7(message: string): void {
     // console.log(message.split('\r'));
-    let jsonHL7:string;
+    let jsonHL7: string;
     jsonHL7 = hl72json(message.split('\r'), '2.5');
     console.log(jsonHL7);
     var obx = jsonHL7["OBX"];
@@ -33,9 +40,9 @@ export class Hl7TableComponent implements OnInit {
     this.files = event.files;
     for (const file of event.files) {
       file.fileEntry.file(hl7file => {
-        let reader:FileReader = new FileReader();
+        let reader: FileReader = new FileReader();
         var comp = this;
-        reader.onloadend =  function(e)  {
+        reader.onloadend = function (e) {
           console.log(this.result);
           comp.loadHL7(this.result);
         };
@@ -46,13 +53,12 @@ export class Hl7TableComponent implements OnInit {
 
   constructor() {
     this.hl7table = [
-      [ "",""],
-      [ "",""]
+      ["", ""],
+      ["", ""]
     ];
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   update() {
     console.log(this.hl7contents);
@@ -60,3 +66,4 @@ export class Hl7TableComponent implements OnInit {
 
 
 }
+

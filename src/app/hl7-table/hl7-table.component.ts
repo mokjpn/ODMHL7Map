@@ -7,8 +7,7 @@ import {
   UploadFile
 } from 'ngx-file-drop';
 
-declare
-var require: any
+declare var require: any
 var hl72json = require('qewd-hl72json');
 var jsonToTable = require('json-to-table');
 

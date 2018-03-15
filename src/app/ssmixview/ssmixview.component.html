@@ -1,8 +1,6 @@
-<p>
-  ssmixview works!
-</p>
+
   <div id="hl7-treeview">
-    <app-ssmixtree></app-ssmixtree>
+    <app-ssmixtree (selected)="viewhl7($event)"></app-ssmixtree>
   </div>
   <div id="hl7-tableview">
     <app-hl7-table></app-hl7-table>

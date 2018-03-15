@@ -1,3 +1,13 @@
-<p>
-  ssmixtree works!
-</p>
+<file-drop *ngIf="nodes[0].children.length == 0" headertext="Drop files here" (onFileDrop)="dropped($event)">
+  <span>Drop SS-MIX2 Folder here</span>
+</file-drop>
+
+<tree-root  [nodes]="nodes" [options]="options">
+  <ng-template #treeNodeTemplate let-node let-index="index">
+    <span>{{node.data.name}}</span>
+    <button *ngIf="node.data.contents" (click)="viewhl7(node.data.contents)">View</button>
+  </ng-template>
+</tree-root>
+  <p>
+    <button (click)="update()">Update!</button>
+

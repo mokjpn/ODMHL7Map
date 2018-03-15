@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FileDropModule } from 'ngx-file-drop';
+import { TreeModule } from 'angular-tree-component';
 
 
 import { AppComponent } from './app.component';
@@ -26,7 +27,8 @@ import { FooterComponent } from './footer/footer.component';
   imports: [
     BrowserModule,
     FormsModule,
-    FileDropModule
+    FileDropModule,
+    TreeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

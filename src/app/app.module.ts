@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { FileDropModule } from 'ngx-file-drop';
 import { TreeModule } from 'angular-tree-component';
-
+import { NgxDnDModule } from '@swimlane/ngx-dnd';
 
 import { AppComponent } from './app.component';
 import { OdmviewComponent } from './odmview/odmview.component';
@@ -28,7 +28,8 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     FileDropModule,
-    TreeModule
+    TreeModule,
+    NgxDnDModule
   ],
   providers: [],
   bootstrap: [AppComponent]

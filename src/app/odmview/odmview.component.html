@@ -8,7 +8,11 @@
          <li>
            {{section.SectionName}}
            <dl>
-             <ng-container *ngFor="let item of section.Items"><dt>{{item.Name}} <dd>{{item.Value}} </ng-container>
+<ng-container *ngFor="let item of section.Items">
+  <dt>{{item.Name}}
+  <dd>
+    <ngx-dnd-container ngxDroppable dropZones="['odmTarget']">{{item.Value}}</ngx-dnd-container>
+</ng-container>
              </dl>
            </li>
          </ng-container>

@@ -8,13 +8,14 @@
          <li>
            {{section.SectionName}}
            <dl>
-<ng-container *ngFor="let item of section.Items">
-  <dt>{{item.Name}}
-  <dd>
-    <ngx-dnd-container ngxDroppable dropZones="['odmTarget']">{{item.Value}}</ngx-dnd-container>
-</ng-container>
-             </dl>
-           </li>
+              <div class="ngx-dnd-container" ngxDroppable="odmTarget" *ngFor="let item of section.Items">
+                <dt>{{item.Name}}</dt>
+                <dd>
+                  <div class="ngx-dnd-item" >{{item.Value}}</div>
+                </dd>
+              </div>
+            </dl>
+          </li>
          </ng-container>
        </ul>
      </h3>

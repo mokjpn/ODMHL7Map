@@ -1,8 +1,8 @@
-<file-drop *ngIf="nodes[0].children.length == 0" headertext="Drop files here" (onFileDrop)="dropped($event)">
+<file-drop *ngIf="ssnodes[0].children.length == 0" headertext="Drop files here" (onFileDrop)="dropped($event)">
   <span>Drop SS-MIX2 Folder here</span>
 </file-drop>
 
-<tree-root  [nodes]="nodes" [options]="options">
+<tree-root #tree [nodes]="ssnodes" [options]="options">
   <ng-template #treeNodeTemplate let-node let-index="index">
     <span>{{node.data.name}}</span>
     <button *ngIf="node.data.contents" (click)="viewhl7(node.data.contents)">View</button>

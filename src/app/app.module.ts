@@ -28,7 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     BrowserModule,
     FormsModule,
     FileDropModule,
-    TreeModule,
+    TreeModule.forRoot(),
     NgxDnDModule
   ],
   providers: [],

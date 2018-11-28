@@ -4,7 +4,8 @@ import {
 } from '@angular/core';
 import {
   UploadEvent,
-  UploadFile
+  UploadFile,
+  FileSystemFileEntry
 } from 'ngx-file-drop';
 
 declare var require: any;
@@ -25,7 +26,7 @@ export class Hl7TableComponent implements OnInit {
 
   public filterValues(data) {
     for (const key in data) {
-      if(data.hasOwnProperty(key)) {
+      if (data.hasOwnProperty(key)) {
         if (data[key].hasOwnProperty('value')) {
           data[key] = data[key].value;
         } else if (typeof data[key] === 'object') {
@@ -49,15 +50,18 @@ export class Hl7TableComponent implements OnInit {
   public dropped(event: UploadEvent) {
     this.files = event.files;
     for (const file of event.files) {
-      file.fileEntry.file(hl7file => {
-        const reader: FileReader = new FileReader();
-        const comp = this;
-        reader.onloadend = function (e) {
-          console.log(this.result);
-          comp.loadHL7(this.result);
-        };
-        reader.readAsText(hl7file);
-      });
+      if (file.fileEntry.isFile) {
+        const fileEntry = file.fileEntry as FileSystemFileEntry;
+        fileEntry.file(hl7file => {
+          const reader: FileReader = new FileReader();
+          const comp = this;
+          reader.onloadend = function (e) {
+            console.log(this.result);
+            comp.loadHL7(this.result as string);
+          };
+          reader.readAsText(hl7file);
+        });
+      }
     }
   }
 

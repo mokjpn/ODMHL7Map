@@ -80,6 +80,9 @@ export class OdmviewComponent implements OnInit {
     }
   }
 
+  public itemdrop(event: any) {
+    console.log(event);
+  }
   constructor() {}
 
   ngOnInit() {}

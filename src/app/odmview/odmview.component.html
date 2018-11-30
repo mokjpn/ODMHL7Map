@@ -8,10 +8,10 @@
          <li>
            {{section.SectionName}}
            <dl>
-              <div class="ngx-dnd-container" ngxDroppable="odmTarget" *ngFor="let item of section.Items">
+              <div appDroppable (dropped)="itemdrop($event)" *ngFor="let item of section.Items">
                 <dt>{{item.Name}}</dt>
                 <dd>
-                  <div class="ngx-dnd-item" >{{item.Value}}</div>
+                  <div >{{item.Value}}</div>
                 </dd>
               </div>
             </dl>

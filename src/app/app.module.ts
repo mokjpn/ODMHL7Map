@@ -12,6 +12,8 @@ import { SsmixtreeComponent } from './ssmixtree/ssmixtree.component';
 import { SsmixviewComponent } from './ssmixview/ssmixview.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { DraggableDirective } from './draggable.directive';
+import { DroppableDirective } from './droppable.directive';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import { FooterComponent } from './footer/footer.component';
     SsmixtreeComponent,
     SsmixviewComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    DraggableDirective,
+    DroppableDirective
   ],
   imports: [
     BrowserModule,

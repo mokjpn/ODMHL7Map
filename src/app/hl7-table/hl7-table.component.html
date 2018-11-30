@@ -3,9 +3,9 @@
    </file-drop>
 
    <table>
-    <tr class="ngx-dnd-container" ngxDroppable>
+    <tr >
       <th *ngFor="let item of hl7header">          
-        <div class="ngx-dnd-item" ngxDraggable="['odmTarget']">{{item}}</div>
+        <div appDraggable>{{item}}</div>
       </th>
     </tr>
 

@@ -1,12 +1,16 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  ViewChildren,
+  QueryList
 } from '@angular/core';
 import {
   UploadEvent,
   UploadFile,
   FileSystemFileEntry
 } from 'ngx-file-drop';
+import {CdkDragDrop, CdkDropList} from '@angular/cdk/drag-drop';
+import { OdmelementsService } from '../odmelements.service'; 
 
 @Component({
   selector: 'app-odmview',
@@ -27,6 +31,8 @@ export class OdmviewComponent implements OnInit {
     }]
   }];
   public pageStart = 0;
+  @ViewChildren(CdkDropList) dropelements: QueryList<CdkDropList>;
+
 
   public loadODM(text: string) {
     this.dispODM = [];
@@ -61,6 +67,9 @@ export class OdmviewComponent implements OnInit {
       }
       this.dispODM.push(aform);
     }
+    this.dropelements.changes.subscribe(() => {
+      this.odmservice.setElements(this.dropelements);
+    });
   }
   public dropped(event: UploadEvent) {
     this.files = event.files;
@@ -80,13 +89,16 @@ export class OdmviewComponent implements OnInit {
     }
   }
 
-  constructor() {}
+  drop(event: CdkDragDrop<string[]>) {
+    console.log(event);
+  }
+  constructor(private odmservice: OdmelementsService) {}
 
   ngOnInit() {}
 
   update() {
-    console.log(this.dispODM);
-    console.log(this.pageStart);
+  //  console.log(this.dispODM);
+  //  console.log(this.pageStart);
   }
 
   pager(page: number) {

@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^7.1.0",
+    "@angular/cdk": "^7.1.0",
     "@angular/common": "^7.1.0",
     "@angular/compiler": "^7.1.0",
     "@angular/core": "^7.1.0",
@@ -36,6 +37,7 @@
     "tslib": "^1.9.0",
     "typescript": "^3.1.6",
     "webpack": "^4.26.1",
+    "webpack-dev-server": "^3.1.10",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

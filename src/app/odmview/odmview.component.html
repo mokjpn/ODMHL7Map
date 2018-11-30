@@ -1,17 +1,18 @@
 <file-drop *ngIf="dispODM.length == 1" headertext="Drop files here" (onFileDrop)="dropped($event)">
      <span>Drop ODM File here</span>
  </file-drop>
+<div  id='odm-view-drop'>
  <ng-container *ngFor="let form of dispODM | slice: pageStart: pageStart+1">
    <h3>{{form.FormName}}
      <ul>
        <ng-container *ngFor="let section of form.Sections">
          <li>
            {{section.SectionName}}
-           <dl>
-              <div class="ngx-dnd-container" ngxDroppable="odmTarget" *ngFor="let item of section.Items">
+<dl >
+<div cdkDropList (cdkDropListDropped)="drop($event)" *ngFor="let item of section.Items">
                 <dt>{{item.Name}}</dt>
                 <dd>
-                  <div class="ngx-dnd-item" >{{item.Value}}</div>
+<div >{{item.Value}}</div>
                 </dd>
               </div>
             </dl>
@@ -25,5 +26,7 @@
      <ng-container *ngFor="let form of dispODM; index as pagenumber">
        <a href="#" (click)="pager(pagenumber)">{{form.FormName}}</a></ng-container>
      </ul>
+     </div>
   <p>
    <button (click)="update()">Update!</button>
+

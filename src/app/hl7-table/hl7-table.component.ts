@@ -7,6 +7,7 @@ import {
   UploadFile,
   FileSystemFileEntry
 } from 'ngx-file-drop';
+import { OdmelementsService } from '../odmelements.service'; 
 
 declare var require: any;
 const hl72json = require('qewd-hl72json');
@@ -23,6 +24,7 @@ export class Hl7TableComponent implements OnInit {
   public hl7header = [];
   public hl7contents;
   public cols;
+  public odmelements;
 
   public filterValues(data) {
     for (const key in data) {
@@ -36,6 +38,9 @@ export class Hl7TableComponent implements OnInit {
     }
   }
   public loadHL7(message: string): void {
+    //this.odmelements = this.odmservice.elementsStr;
+    this.odmelements='odm-view-drop';
+    console.log(this.odmelements);
     // console.log(message.split('\r'));
     let jsonHL7: Array<Object>;
     jsonHL7 = hl72json(message.split('\r'), '2.5');
@@ -65,7 +70,7 @@ export class Hl7TableComponent implements OnInit {
     }
   }
 
-  constructor() {
+  constructor(private odmservice: OdmelementsService ) {
     this.hl7table = [
       ['', ''],
       ['', '']

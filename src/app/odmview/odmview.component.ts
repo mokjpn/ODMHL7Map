@@ -1,6 +1,7 @@
 import {
   Component,
-  OnInit
+  OnInit,
+  Inject
 } from '@angular/core';
 import {
   UploadEvent,
@@ -8,11 +9,14 @@ import {
   FileSystemFileEntry
 } from 'ngx-file-drop';
 
+import {  MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+
 @Component({
   selector: 'app-odmview',
   templateUrl: './odmview.component.html',
   styleUrls: ['./odmview.component.css']
 })
+
 export class OdmviewComponent implements OnInit {
   public files: UploadFile[] = [];
   public odm: Document;
@@ -82,8 +86,16 @@ export class OdmviewComponent implements OnInit {
 
   public itemdrop(event: any) {
     console.log(event);
+    const dialogRef = this.dialog.open(MappingDialog, {
+      width: '250px',
+      data: { source: event[1], target: event[0] }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
-  constructor() {}
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
 
@@ -97,3 +109,24 @@ export class OdmviewComponent implements OnInit {
   }
 }
 
+export class MappingData {
+  source: string;
+  target: string;
+}
+
+@Component({
+  selector: 'app-odmview-mappingdialog',
+  templateUrl: './mappingdialog.html',
+  styleUrls: ['./mappingdialog.css'],
+})
+// tslint:disable-next-line:component-class-suffix
+export class MappingDialog {
+  constructor(
+    public dialogRef: MatDialogRef<MappingDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: MappingData) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+}

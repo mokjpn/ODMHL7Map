@@ -40,7 +40,7 @@ export class DroppableDirective  implements OnInit {
 
       el.classList.remove('over');
       const data = e.dataTransfer.getData('item');
-      this.dropped.emit([el.outerText, data]);
+      this.dropped.emit([el.firstElementChild.textContent, data]);
       return false;
     });
   }

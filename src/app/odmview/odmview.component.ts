@@ -87,7 +87,7 @@ export class OdmviewComponent implements OnInit {
   public itemdrop(event: any) {
     console.log(event);
     const dialogRef = this.dialog.open(MappingDialog, {
-      width: '250px',
+      width: '750px',
       data: { source: event[1], target: event[0] }
     });
     dialogRef.afterClosed().subscribe(result => {

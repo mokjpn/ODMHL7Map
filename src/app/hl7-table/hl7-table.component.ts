@@ -22,6 +22,8 @@ export class Hl7TableComponent implements OnInit {
   public hl7table;
   public hl7header = [];
   public hl7contents;
+  public hl7whole: Array<Object>;
+  public hl7segments = [];
   public cols;
 
   public filterValues(data) {
@@ -37,14 +39,23 @@ export class Hl7TableComponent implements OnInit {
   }
   public loadHL7(message: string): void {
     // console.log(message.split('\r'));
-    let jsonHL7: Array<Object>;
-    jsonHL7 = hl72json(message.split('\r'), '2.5');
-    const obx = jsonHL7['OBX'];
-    this.filterValues(obx);
-    this.hl7table = jsonToTable(obx);
+    // tslint:disable-next-line:prefer-const
+    this.hl7whole = hl72json(message.split('\r'), '2.5');
+    this.hl7segments = Object.keys(this.hl7whole);
+    const msh = this.hl7whole['MSH'];
+    this.filterValues(msh);
+    this.hl7table = jsonToTable(msh);
     this.hl7header = this.hl7table[0];
     this.hl7contents = this.hl7table.slice(1, this.hl7table.length);
     // console.log(this.hl7table);
+  }
+
+  public changeSegment(seg: string): void {
+    const segm = this.hl7whole[seg];
+    this.filterValues(segm);
+    this.hl7table = jsonToTable(segm);
+    this.hl7header = this.hl7table[0];
+    this.hl7contents = this.hl7table.slice(1, this.hl7table.length);
   }
 
   public dropped(event: UploadEvent) {

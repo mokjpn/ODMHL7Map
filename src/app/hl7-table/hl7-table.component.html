@@ -2,6 +2,8 @@
        <span>Drop HL7 Message File here</span>
    </file-drop>
 
+  <p>
+    Segments: <a *ngFor="let segment of hl7segments" href="#" (click)="changeSegment(segment)">{{segment}} </a>
    <table>
     <tr >
       <th *ngFor="let item of hl7header">          

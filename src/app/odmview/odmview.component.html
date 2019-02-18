@@ -23,7 +23,7 @@
    <p>Go To...
      <ul>
      <ng-container *ngFor="let form of dispODM; index as pagenumber">
-       <a href="#" (click)="pager(pagenumber)">{{form.FormName}}</a></ng-container>
+       <a href="#" (click)="pager(pagenumber)">{{form.FormName}} </a></ng-container>
      </ul>
   <p>
    <button (click)="update()">Update!</button>

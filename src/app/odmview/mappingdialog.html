@@ -1,9 +1,23 @@
 <h1 mat-dialog-title>Select Mapping Strategy</h1>
-<div mat-dialog-content>
-<p>Mapping Source: {{data.source}}</p>
-<p>Mapping Target: {{data.target}}</p>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancel</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</div>
+  <mat-tab-group>
+    <mat-tab label="Source">
+      <div mat-dialog-content>
+        <p>Mapping Source: {{data.source}}</p>
+        <p>Mapping Target: {{data.target}}</p>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+      </div>
+    </mat-tab>
+    <mat-tab label="Condition">
+      <div mat-dialog-content>
+        <p>Mapping Source: {{data.source}}</p>
+        <p>Mapping Target: {{data.target}}</p>
+      </div>  
+      <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>

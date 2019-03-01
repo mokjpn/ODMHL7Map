@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { FileDropModule } from 'ngx-file-drop';
 import { TreeModule } from 'angular-tree-component';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
-import { MatDialogModule} from '@angular/material';
+import { MatDialogModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -38,7 +39,8 @@ import { DroppableDirective } from './droppable.directive';
     TreeModule.forRoot(),
     NgxDnDModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

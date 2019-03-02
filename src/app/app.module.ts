@@ -13,10 +13,11 @@ import { OdmviewComponent, MappingDialog } from './odmview/odmview.component';
 import { Hl7TableComponent } from './hl7-table/hl7-table.component';
 import { SsmixtreeComponent } from './ssmixtree/ssmixtree.component';
 import { SsmixviewComponent } from './ssmixview/ssmixview.component';
-import { HeaderComponent } from './header/header.component';
+import { HeaderComponent, MapViewDialog } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { DraggableDirective } from './draggable.directive';
 import { DroppableDirective } from './droppable.directive';
+import { ClipboardModule } from 'ngx-clipboard';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { DroppableDirective } from './droppable.directive';
     FooterComponent,
     DraggableDirective,
     DroppableDirective,
-    MappingDialog
+    MappingDialog,
+    MapViewDialog
   ],
   imports: [
     BrowserModule,
@@ -40,10 +42,11 @@ import { DroppableDirective } from './droppable.directive';
     NgxDnDModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatTabsModule
+    MatTabsModule,
+    ClipboardModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ MappingDialog ]
+  entryComponents: [ MappingDialog, MapViewDialog ]
 })
 export class AppModule { }

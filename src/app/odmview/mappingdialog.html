@@ -2,22 +2,28 @@
   <mat-tab-group>
     <mat-tab label="Source">
       <div mat-dialog-content>
-        <p>Mapping Source: {{data.source}}</p>
-        <p>Mapping Target: {{data.target}}</p>
+      <p>ODM Element: {{data.odmElement}}</p>
+      <p>CDASH Name: {{data.cdashName}}</p>
+      <p>HL7 Field: {{data.hl7Field}}</p>
       </div>
       <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+        <button mat-button [mat-dialog-close]>Cancel</button>
+        <button mat-button (click)="doCopyMapping()" cdkFocusInitial>Create "Copy" Mapping</button>
       </div>
     </mat-tab>
     <mat-tab label="Condition">
       <div mat-dialog-content>
-        <p>Mapping Source: {{data.source}}</p>
-        <p>Mapping Target: {{data.target}}</p>
+        <dl>
+          <dd>Copy to CDASH variable: {{data.cdashName}}</dd>
+          <dt>
+          <mat-form-field>
+          Only when: {{data.hl7Field}} is: <input matInput [(ngModel)]="data.conditionValue" placeholder="{{data.placeholder}}"></mat-form-field> 
+          </dt>
+          </dl>
       </div>  
       <div mat-dialog-actions>
-        <button mat-button (click)="onNoClick()">Cancel</button>
-        <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+        <button mat-button [mat-dialog-close]>Cancel</button>
+        <button mat-button (click)="doConditionalMapping()" cdkFocusInitial [disabled]="data.error">Add this condition to current mapping</button>
       </div>
     </mat-tab>
   </mat-tab-group>

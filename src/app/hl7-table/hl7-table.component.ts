@@ -25,6 +25,7 @@ export class Hl7TableComponent implements OnInit {
   public hl7whole: Array<Object>;
   public hl7segments = [];
   public cols;
+  public currentSegment;
 
   public filterValues(data) {
     for (const key in data) {
@@ -43,6 +44,7 @@ export class Hl7TableComponent implements OnInit {
     this.hl7whole = hl72json(message.split('\r'), '2.5');
     this.hl7segments = Object.keys(this.hl7whole);
     const msh = this.hl7whole['MSH'];
+    this.currentSegment = 'MSH';
     this.filterValues(msh);
     this.hl7table = jsonToTable(msh);
     this.hl7header = this.hl7table[0];
@@ -52,12 +54,16 @@ export class Hl7TableComponent implements OnInit {
 
   public changeSegment(seg: string): void {
     const segm = this.hl7whole[seg];
+    this.currentSegment = seg;
     this.filterValues(segm);
     this.hl7table = jsonToTable(segm);
     this.hl7header = this.hl7table[0];
     this.hl7contents = this.hl7table.slice(1, this.hl7table.length);
   }
 
+  public getIRI(item) {
+    return ('http://www.umin.ac.jp/cdisc/mapping/2019/03/hl7#' + this.currentSegment + '.' + item );
+  }
   public dropped(event: UploadEvent) {
     this.files = event.files;
     for (const file of event.files) {

@@ -9,7 +9,7 @@
            {{section.SectionName}}
            <dl>
               <div appDroppable (dropped)="itemdrop($event)" *ngFor="let item of section.Items">
-                <dt>{{item.Name}}</dt>
+                <dt attr.odm-iri="{{item.IRI}}" attr.odm-cdashname="{{item.CDASHName}}">{{item.Name}}</dt>
                 <dd>
                   <div >{{item.Value}}</div>
                 </dd>

@@ -6,6 +6,9 @@ import { TreeModule } from 'angular-tree-component';
 import { NgxDnDModule } from '@swimlane/ngx-dnd';
 import { MatDialogModule } from '@angular/material';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -19,6 +22,7 @@ import { DraggableDirective } from './draggable.directive';
 import { DroppableDirective } from './droppable.directive';
 import { ClipboardModule } from 'ngx-clipboard';
 
+import { MappingDataService } from './mapping-data.service';
 
 @NgModule({
   declarations: [
@@ -43,9 +47,11 @@ import { ClipboardModule } from 'ngx-clipboard';
     BrowserAnimationsModule,
     MatDialogModule,
     MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
     ClipboardModule
   ],
-  providers: [],
+  providers: [MappingDataService],
   bootstrap: [AppComponent],
   entryComponents: [ MappingDialog, MapViewDialog ]
 })

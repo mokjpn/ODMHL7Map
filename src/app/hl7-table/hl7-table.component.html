@@ -7,7 +7,7 @@
    <table>
     <tr >
       <th *ngFor="let item of hl7header">          
-        <div appDraggable>{{item}}</div>
+        <div appDraggable attr.hl7-iri="{{this.getIRI(item)}}">{{item}}</div>
       </th>
     </tr>
 

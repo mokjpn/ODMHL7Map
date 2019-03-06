@@ -22,7 +22,7 @@ export class DraggableDirective implements OnInit {
     el.addEventListener('dragstart', (e) => {
       el.classList.add('drag-src');
       e.dataTransfer.effectAllowed = 'move';
-      e.dataTransfer.setData('item', el.textContent);
+      e.dataTransfer.setData('item', el.getAttribute('hl7-iri'));
     });
 
     // Remove the drag-src class

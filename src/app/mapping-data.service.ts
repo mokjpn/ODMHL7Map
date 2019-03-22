@@ -46,12 +46,21 @@ export class MappingDataService {
   }
 
   output() {
-    let serialized = '';
-    this.store.forEach((triple) => {
-      serialized = serialized + triple.toNT() + '\n';
-    });
+    const profile = rdf.environment.createProfile();
+    profile.setPrefix('hcm', 'http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#');
+    profile.setPrefix('hcmop', 'http://www.umin.ac.jp/cdisc/mapping/2019/03/mappingoperator#');
+    profile.setPrefix('hcmhl7', 'http://www.umin.ac.jp/cdisc/mapping/2019/03/hl7#');
+    const turtle = this.store
+      .toArray()
+      .sort(function (a, b) { return a.compare(b); })
+      .map(function (stmt) {
+        return stmt.toTurtle(profile);
+      });
+    const serialized = turtle.join('\n');
+    // tslint:disable-next-line:max-line-length
+    const prefix = '@prefix hcm: <http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#> .\n@prefix hcmop:<http://www.umin.ac.jp/cdisc/mapping/2019/03/mappingoperator#> . \n@prefix hcmhl7: <http://www.umin.ac.jp/cdisc/mapping/2019/03/hl7#> .\n\n';
     console.log('Serialized Mapping: ' + serialized);
-    return(serialized);
+    return(prefix + serialized);
   }
 }
 

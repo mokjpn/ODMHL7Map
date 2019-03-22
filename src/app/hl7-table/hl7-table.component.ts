@@ -30,6 +30,9 @@ export class Hl7TableComponent implements OnInit {
   public filterValues(data) {
     for (const key in data) {
       if (data.hasOwnProperty(key)) {
+        if (Array.isArray(data[key])) {
+          data[key] = data[key][0];
+        }
         if (data[key].hasOwnProperty('value')) {
           data[key] = data[key].value;
         } else if (typeof data[key] === 'object') {

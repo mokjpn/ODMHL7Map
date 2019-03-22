@@ -214,17 +214,17 @@ export class MappingDialog {
   }
 
   doCopyMapping(): void {
-    this.mapping.add(
-      rdf.environment.createTriple(
-        this.data.odmElement,
-        'http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#CDASHName',
-        rdf.environment.createLiteral(this.data.cdashName)));
     const hl7BlankNode = rdf.environment.createBlankNode();
     this.mapping.add(
       rdf.environment.createTriple(
         this.data.odmElement,
         'http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#copyfrom',
         hl7BlankNode));
+    this.mapping.add(
+      rdf.environment.createTriple(
+        hl7BlankNode,
+        'http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#CDASHName',
+        rdf.environment.createLiteral(this.data.cdashName)));
     this.mapping.add(
       rdf.environment.createTriple(
         hl7BlankNode,

@@ -1,27 +1,9 @@
 # ODMHL7Map
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.2.
+A tool to support mapping works from CDISC CDASH-based CRF fields and EHR data stored on HL7 message or SS-MIX2 repository.
+You can drop SS-MIX2 folder and CDASH-ODM file on this single page web appplication, then specify mapping between HL7 fields and ODM ItemDefs. The mapping information can be exported as RDF turtle statements.
 
-## Development server
+Specification of the resulted RDF turtle will be published as a research report.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+This work was supported by the Project Promoting Clinical Trials for Development of New Drugs from Japan Agency for Medical Research and development, AMED.
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

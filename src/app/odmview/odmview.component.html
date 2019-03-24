@@ -1,6 +1,6 @@
-<file-drop *ngIf="dispODM.length == 1" headertext="Drop files here" (onFileDrop)="dropped($event)">
-     <span>Drop ODM File here</span>
- </file-drop>
+<file-drop *ngIf="dispODM.length == 1" (onFileDrop)="dropped($event)">
+  <span>Drop ODM File here</span>
+</file-drop>
  <ng-container *ngFor="let form of dispODM | slice: pageStart: pageStart+1">
    <h3>{{form.FormName}}
      <ul>

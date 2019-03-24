@@ -53,8 +53,10 @@ export class OdmviewComponent implements OnInit {
         const itemgroupoid = itemgrouprefs[i].getAttribute('ItemGroupOID');
         const itemgroupdef = this.odm.querySelector('[OID=\'' + itemgroupoid + '\']');
         const items: Array < Object > = [];
+        const domain = itemgroupdef.getAttribute('Domain');
         const asection = {
           SectionName: itemgroupdef.getAttribute('Name'),
+          Domain: domain,
           Items: items
         };
         const itemrefs = itemgroupdef.getElementsByTagName('ItemRef');
@@ -76,8 +78,7 @@ export class OdmviewComponent implements OnInit {
                 vlvalue = null;
                 cdashvar = CDASHNAME;
               }
-            const cdashdomain = cdashvar.substr(0, 2);
-              IRI = 'http://rdf.cdisc.org/std/cdash-1-1#DataElement.' + cdashdomain + '.' + cdashvar ;
+              IRI = 'http://rdf.cdisc.org/std/cdash-1-1#DataElement.' + domain + '.' + cdashvar ;
             }
 
           }
@@ -122,7 +123,7 @@ export class OdmviewComponent implements OnInit {
     } else {
       condvalue = this.mapping.getConditionValue(event[0]);
       if (condvalue == null) {
-        placeholdermessage = 'Enter condition value';
+        placeholdermessage = '';
         error = false;
       } else {
         placeholdermessage = 'Condition already defined';
@@ -204,7 +205,7 @@ export class MappingDialog {
       rdf.environment.createTriple(
         conditionNode,
         'http://www.umin.ac.jp/cdisc/mapping/2019/03/ssmix2#operator',
-        'http://www.umin.ac.jp/cdisc/mapping/2019/03/mappingoperator#numEqual'));
+        'http://www.umin.ac.jp/cdisc/mapping/2019/03/mappingoperator#charEqual'));
     this.mapping.add(
       rdf.environment.createTriple(
         conditionNode,
